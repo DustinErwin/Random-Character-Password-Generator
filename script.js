@@ -58,24 +58,26 @@ function randomizer(obj) {
 
     var passPool = compilation();
 
-    var password = [];
+    var passChars = [];
+
+    var passDone = [];
 
     function compilation() {
 
       if (passReq.hasSpcChars) {
-        var passPool = passPool.concat.spcChars;
+        var passChars = passChars.concat.spcChars;
       };
 
       if (passReq.hasLwrCase) {
-        var passPool = passPool.concat.lwrCase;
+        var passChars = passChars.concat.lwrCase;
       };
 
       if (passReq.hasUpprCase) {
-        var passPool = passPool.concat.upprCase;
+        var passChars = passChars.concat.upprCase;
       };
 
       if (passReq.hasNumbers) {
-        var passPool = passPool.concat.number;
+        var passChars = passChars.concat.number;
       };
 
       return passPool;
@@ -85,7 +87,7 @@ function randomizer(obj) {
     for (var i = 0; i < passReq.passLength; i++) {
       var passChar = getRandom(passPool);
   
-      password.push(passChar);
+      passDone.push(passChar);
     }
 
  }
