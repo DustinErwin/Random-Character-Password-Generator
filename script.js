@@ -25,7 +25,7 @@ function askRequirements() {
 
   var hasUpprCase = confirm('Add upper case characters?');
 
-  var hasNumbers = confirm('Add numbers?')
+  var hasNumbers = confirm('Add numbers?');
 
   if (hasSpcChars||hasLwrCase||hasUpprCase||hasNumbers){
    
@@ -41,14 +41,14 @@ function askRequirements() {
   } else {
     alert('You must choose at least one character type.')
   };
-}
+};
 
 function randomizer(obj) {
   var indx = Math.floor(Math.random() * obj.length);
   var rndItem = obj[indx];
 
-  return randElement;
-}
+  return rndItem;
+};
 
 
 
@@ -56,41 +56,36 @@ function randomizer(obj) {
 
     var passReq = askRequirements();
 
-    var passPool = compilation();
-
     var passChars = [];
 
     var passDone = [];
 
-    function compilation() {
+    if (passReq.hasSpcChars) {
+      var passChars = passChars.concat(spcChars);
+    };
 
-      if (passReq.hasSpcChars) {
-        var passChars = passChars.concat.spcChars;
-      };
+    if (passReq.hasLwrCase) {
+      var passChars = passChars.concat(lwrCase);
+    };
 
-      if (passReq.hasLwrCase) {
-        var passChars = passChars.concat.lwrCase;
-      };
+    if (passReq.hasUpprCase) {
+      var passChars = passChars.concat(upprCase);
+    };
 
-      if (passReq.hasUpprCase) {
-        var passChars = passChars.concat.upprCase;
-      };
+    if (passReq.hasNumbers) {
+      var passChars = passChars.concat(number);
+    };
 
-      if (passReq.hasNumbers) {
-        var passChars = passChars.concat.number;
-      };
-
-      return passPool;
-
-    }
 
     for (var i = 0; i < passReq.passLength; i++) {
-      var passChar = getRandom(passPool);
+      var passChar = randomizer(passChars);
   
       passDone.push(passChar);
-    }
+    };
 
- }
+    return passDone.join('');
+
+ };
 
 
 
